@@ -39,6 +39,7 @@
 
         public void LineCompare(Line l1,Line l2)
         {
+            //Comparision starts
             if (l1.Length.Equals(l2.Length))
             {
                 Console.WriteLine("Lines are equal");
