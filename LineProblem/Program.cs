@@ -15,7 +15,7 @@
         
     }
 
-    public class Line
+    public class Line : IComparable<Line>
     {
         
         public Point Start { get; }
@@ -37,17 +37,13 @@
             return length;
         }
 
-        public void LineCompare(Line l1,Line l2)
+        public int CompareTo(Line other)
         {
             //Comparision starts
-            if (l1.Length.Equals(l2.Length))
-            {
-                Console.WriteLine("Lines are equal");
-            }
-            else
-            {
-                Console.WriteLine("Lines are not equal");
-            }
+            if (other == null) return 1;
+
+            return this.Length.CompareTo(other.Length);
+
         }
     }
     internal class Program
@@ -108,7 +104,20 @@
             // comparing line
 
             Console.WriteLine("Comparing Lines");
-            line1.LineCompare(line1,line2);
+            int result = line1.CompareTo(line2);
+
+            if (result == 0)
+            {
+                Console.WriteLine("Lines are equal");
+            }
+            else if(result >0)
+            {
+                Console.WriteLine("Line1 is longer than Line2");
+            }
+            else
+            {
+                Console.WriteLine("Line2 is longer than Line1");
+            }
         }
     }
 }
